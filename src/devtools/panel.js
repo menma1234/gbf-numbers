@@ -49,13 +49,25 @@ function parseStart(content, encoding) {
 // Parses the responses from abilities, summons, and attacks
 function parseResponse(content, encoding) {
 	var obj = JSON.parse(content);
+	
+	// if the response is the popup from clicking too fast
+	if(!("scenario" in obj)) {
+		return;
+	}
+	
 	var log = obj.scenario;
 	
 	for(var i = 0; i < log.length; i++) {
 		var curr = log[i];
 		
-		if(curr.cmd === "damage" && curr.to === "boss") {
+		// no idea why there's randomly an empty array sometimes...
+		if(!("cmd" in curr)) {
+			continue;
+		}
+		
+		if((curr.cmd === "damage" || curr.cmd === "heal") && curr.to === "boss") {
 			// ability damage, extra damage (from summons (e.g. ranko) or supers (e.g. charlotte's super in break)), chain burst
+			// enemy heals also use the same json format
 			for(var j = 0; j < curr.list.length; j++) {
 				hp[curr.list[j].pos] = curr.list[j].hp;
 			}
