@@ -6,4 +6,4 @@ This extension for Chrome provides a numerical display for the HP of enemies in 
 
 Of course, this only works if you are playing the game from within the browser with the developer tools console open. It will not work on mobile, as mobile Chrome does not support developer tools or extensions, nor if you are playing with the Chrome app.
 
-**Note:** The display will only update whenever you perform an action. Multibattle updating is implemented through WebSockets and there is currently no way to get access that network traffic through the Chrome extension API at this time. (Apparently you can write a wrapper for the WebSocket constructor, but my JavaScript isn't good enough for that.)
+**Note:** The display will only update whenever you perform an action that affects the enemy's/enemies' HP. Multibattle updating is implemented through WebSockets and there is currently no way to get access that network traffic through the Chrome extension API at this time. (Apparently you can write a wrapper for the WebSocket constructor, but my JavaScript isn't good enough for that.)
