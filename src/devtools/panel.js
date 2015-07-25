@@ -21,7 +21,7 @@ function reset() {
 // Updates the HP shown on the page for all enemies
 function updateHp() {
 	for(var i = 0; i < hp.length; i++) {
-		if(hp[i] === -1 && hpmax[i] === -1) {
+		if(hpmax[i] === -1) {
 			continue;
 		}
 		
@@ -82,9 +82,16 @@ function parseResponse(content, encoding) {
 			// regular attacks
 			var damage = curr.damage;
 			
-			for(var j = 0; j < damage.length; j++) {
-				for(var k = 0; k < damage[j].length; k++) {
-					hp[damage[j][k].pos] = damage[j][k].hp;
+			if(damage.length === undefined && "1" in damage) {
+				// counters (?)
+				for(var j = 0; j < damage["1"].length; j++) {
+					hp[damage["1"][j].pos] = damage["1"][j].hp;
+				}
+			} else {
+				for(var j = 0; j < damage.length; j++) {
+					for(var k = 0; k < damage[j].length; k++) {
+						hp[damage[j][k].pos] = damage[j][k].hp;
+					}
 				}
 			}
 		} else if(curr.cmd === "die" && curr.to === "boss") {
