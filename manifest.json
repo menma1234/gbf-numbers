@@ -1,7 +1,7 @@
 {
 	"name": "GBF Numerical HP Display",
-	"version": "0.1",
-	"minimum_chrome_version": "18.0",
+	"version": "1.0",
+	"minimum_chrome_version": "26.0",
 	"manifest_version": 2,
 	"description": "Shows a numerical display for enemies in Granblue Fantasy.",
 	"devtools_page": "src/devtools/devtools.html",
@@ -9,6 +9,13 @@
 		"scripts": ["src/bg/background.js"],
 		"persistent": false
 	},
+	"content_scripts": [
+		{
+			"matches": ["http://gbf.game.mbga.jp/*"],
+			"css": ["src/content/content.css"],
+			"js": ["src/content/content.js"]
+		}
+	],
 	"permissions": [
 		"http://gbf.game.mbga.jp/*"
 	]
