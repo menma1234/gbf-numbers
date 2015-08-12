@@ -12,7 +12,7 @@ You can grab a packed version of this extension [here](https://dl.dropboxusercon
 
 If you prefer, you can also download a [ZIP of this repo](https://github.com/menma1234/gbf-numbers/archive/master.zip), unzip it, enable developer mode on the extensions page, hit "Load unpacked extension...", and find the directory you unzipped it to. Instead of being disabled, there will just be a warning popup every time Chrome is started.
 
-If this annoys you, pay me $5 so that I can publish this to the Chrome Web Store. <span style = "font-size:smaller;">Goddammit Google.</span>
+If this annoys you, pay me $5 so that I can publish this to the Chrome Web Store. <sub><sup>Goddammit Google.</sup></sub>
 
 ## How to Play with Developer Tools
 
