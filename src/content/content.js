@@ -3,7 +3,7 @@ var newElems = null;
 
 chrome.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
-		if(!("hps" in request)) {
+		if(!("hps" in request) || request.hps.length === 0) {
 			return;
 		}
 		

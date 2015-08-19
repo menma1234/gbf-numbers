@@ -2,6 +2,15 @@
 var hp = [];
 var hpmax = [];
 
+var port;
+
+var thousands;
+
+// Inserts thousands separators as needed
+function commatize(x) {
+	return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 // Returns a string containing both a fraction and a percentage given the current and max HP
 // Empty string is returned if the current HP is 0
 function getHpString(hp, hpmax) {
@@ -10,7 +19,12 @@ function getHpString(hp, hpmax) {
 	}
 	
 	var percent = Math.round(hp / hpmax * 10000) / 100;
-	return hp + "/" + hpmax + " (" + percent + "%)";
+	
+	if(thousands) {
+		return commatize(hp) + "/" + commatize(hpmax) + " (" + percent + "%)";
+	} else {
+		return hp + "/" + hpmax + " (" + percent + "%)";
+	}
 }
 
 // Resets variables
@@ -28,7 +42,7 @@ function updateHp() {
 		hps.push(getHpString(hp[i], hpmax[i]));
 	}
 	
-	chrome.runtime.sendMessage({
+	port.postMessage({
 		tabId: chrome.devtools.inspectedWindow.tabId,
 		hps: hps
 	});
@@ -114,6 +128,18 @@ function parseResponse(content, encoding) {
 	
 	updateHp();
 }
+
+// Connect to background page
+port = chrome.runtime.connect( {name: "devtools"} );
+
+// Listen to options changes
+port.onMessage.addListener(
+	function(request) {
+		if("thousands" in request) {
+			thousands = request.thousands;
+			updateHp();
+		}
+	});
 
 // Listen to network requests
 chrome.devtools.network.onRequestFinished.addListener(
