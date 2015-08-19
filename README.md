@@ -8,7 +8,7 @@ Of course, this only works if you are playing the game from within the browser w
 
 ## Installation
 
-You can grab a packed version of this extension [here](https://dl.dropboxusercontent.com/u/63060298/gbf.crx). Drag it into the extensions page of Chrome to install. Due to security settings in Chrome, the extension will be disabled every time you restart Chrome.
+You can grab a packed version of this extension [here](https://raw.githubusercontent.com/menma1234/gbf-numbers/master/bin/gbf.crx). Drag it into the extensions page of Chrome to install. Due to security settings in Chrome, the extension will be disabled every time you restart Chrome.
 
 If you prefer, you can also download a [ZIP of this repo](https://github.com/menma1234/gbf-numbers/archive/master.zip), unzip it, enable developer mode on the extensions page, hit "Load unpacked extension...", and find the directory you unzipped it to. Instead of being disabled, there will just be a warning popup every time Chrome is started.
 
