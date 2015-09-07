@@ -74,8 +74,18 @@ function parseResponse(content, encoding) {
 	}
 	
 	var log = obj.scenario;
+	var length = log.length;
 	
-	for(var i = 0; i < log.length; i++) {
+	// under certain scenarios, an object will be returned instead of an array (e.g. when quatre's skill for resetting ability cooldown procs)
+	// in this case, the keys of the object are numbered sequentially from 0 with some extra things
+	if(log.length === undefined) {
+		// we want only the numerical keys
+		length = Object.keys(log).filter(function(value) {
+				return parseInt(value) == value;
+			}).length;
+	}
+	
+	for(var i = 0; i < length; i++) {
 		var curr = log[i];
 		
 		// no idea why there's randomly an empty array sometimes...
