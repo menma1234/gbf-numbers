@@ -1,4 +1,4 @@
-var origDivs = null;
+var area = null;
 var newElems = null;
 
 chrome.runtime.onMessage.addListener(
@@ -8,20 +8,20 @@ chrome.runtime.onMessage.addListener(
 		}
 		
 		// Find the necessary DOM elements
-		if(origDivs === null) {
-			origDivs = document.getElementsByClassName("btn-enemy-gauge");
+		if(area === null) {
+			area = document.getElementsByClassName("prt-targeting-area");
 		}
 		if(newElems === null) {
 			newElems = document.getElementsByClassName("hpdisplay");
 		}
 		
-		// Insert the new elements after the original ones if they haven't already been
-		// The original ones are not used because during animations, they are hidden, which will end up creating a flickering effect
+		// Insert the new elements into the targeting area
+		// The HP gauge divs are not used because during animations, they are hidden, which will end up creating a flickering effect
 		if(newElems.length === 0) {
-			for(var i = 0; i < origDivs.length; i++) {
+			for(var i = 0; i < request.hps.length; i++) {
 				var div = document.createElement("span");
 				div.setAttribute("class", "hpdisplay");
-				origDivs[i].parentNode.insertBefore(div, origDivs[i].nextSibling);
+				area[0].appendChild(div);
 			}
 		}
 		

@@ -15,9 +15,17 @@
 	left: 112px;
 }
 
-.prt-targeting-area[type="l1"] .hpdisplay {
+.prt-targeting-area[type="l1"] .prt-gauge-area ~ .hpdisplay {
 	top: 30px;
 	left: 69px;
+	text-align: center;
+	width: initial;
+}
+
+.prt-targeting-area[type="l1"] .hpdisplay {
+	top: 30px;
+	width: 100%;
+	text-align: center;
 }
 
 .prt-targeting-area[type="s2"] .hpdisplay,
