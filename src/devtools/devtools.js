@@ -110,10 +110,12 @@ function parseResponse(content, encoding) {
 			// regular attacks
 			var damage = curr.damage;
 			
-			if(damage.length === undefined && "1" in damage) {
-				// counters (?)
-				for(var j = 0; j < damage["1"].length; j++) {
-					hp[damage["1"][j].pos] = damage["1"][j].hp;
+			if(damage.length === undefined) {
+				// counters after first hit
+				for(var key in damage) {
+					for(var j = 0; j < damage[key].length; j++) {
+						hp[damage[key][j].pos] = damage[key][j].hp;
+					}
 				}
 			} else {
 				for(var j = 0; j < damage.length; j++) {
