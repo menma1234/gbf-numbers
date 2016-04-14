@@ -11,19 +11,19 @@
 
 .prt-targeting-area[type="s1"] .hpdisplay,
 .prt-targeting-area[type="m1"] .hpdisplay {
-	top: 42px;
+	top: -3px;
 	left: 112px;
 }
 
 .prt-targeting-area[type="l1"] .prt-gauge-area ~ .hpdisplay {
-	top: 30px;
+	top: -15px;
 	left: 69px;
 	text-align: center;
 	width: initial;
 }
 
 .prt-targeting-area[type="l1"] .hpdisplay {
-	top: 30px;
+	top: -15px;
 	width: 100%;
 	text-align: center;
 }
@@ -32,7 +32,7 @@
 .prt-targeting-area[type="m2"] .hpdisplay,
 .prt-targeting-area[type="l2"] .hpdisplay {
 	width: 130px;
-	top: 42px;
+	top: -3px;
 }
 
 .prt-targeting-area[type="s2"] .hpdisplay:nth-of-type(1),
@@ -51,7 +51,7 @@
 .prt-targeting-area[type="m3"] .hpdisplay,
 .prt-targeting-area[type="l3"] .hpdisplay {
 	width: 100px;
-	top: 42px;
+	top: -3px;
 }
 
 .prt-targeting-area[type="s3"] .hpdisplay:nth-of-type(1),
